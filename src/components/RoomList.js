@@ -6,7 +6,7 @@ class RoomList extends Component {
     super(props);
     this.state = {
       rooms: [],
-      newRoomName: ''
+      newRoomName: '',
     };
     this.storeInput = this.storeInput.bind(this);
     this.createRoom = this.createRoom.bind(this);
@@ -34,6 +34,20 @@ class RoomList extends Component {
     this.setState({newRoomName: newValue});
   }
 
+  handleClass(num) {
+    if (num.key === this.props.activeRoomID) {
+      return 'roomName activeRoom'
+    } else {
+      return 'roomName'
+    }
+  }
+
+  handleClick(num) {
+    const selectionID = num.key;
+    const selectionName = num.name;
+    this.props.handleClickState(selectionID, selectionName);
+  }
+
   render() {
     return(
       <div id='rooms'>
@@ -44,7 +58,9 @@ class RoomList extends Component {
         </form>
 
         <ul>
-          {this.state.rooms.map((num, index) => <li key={index}>{num.name}</li>)}
+          {this.state.rooms.map((num, index) =>
+            <li key={index} className={this.handleClass(num)} onClick={() => this.handleClick(num)}>{num.name}</li>
+          )}
         </ul>
       </div>
     )

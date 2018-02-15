@@ -1,0 +1,14 @@
+#messages {
+  width: calc(100vw - 260px);
+  height: 100vh;
+  display: inline-block;
+  float: right;
+}
+
+li.message {
+  background-color: aliceblue;
+}
+
+li:nth-child(odd).message {
+  background-color: white;
+}
