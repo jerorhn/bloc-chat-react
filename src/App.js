@@ -23,7 +23,7 @@ class App extends Component {
     this.state = {
       activeRoomID: '-L5G7HSty09dMskFDpMA',
       activeRoomName: 'Room 1',
-      userName: 'hello'
+      userName: []
     };
     this.handleClickState = this.handleClickState.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -31,7 +31,7 @@ class App extends Component {
 
   handleClickState(selectionID, selectionName) {
     const newActiveRoomID = selectionID;
-    const newActiveRoomName = selectionName
+    const newActiveRoomName = selectionName;
     this.setState({activeRoomID: newActiveRoomID});
     this.setState({activeRoomName: newActiveRoomName});
   }
