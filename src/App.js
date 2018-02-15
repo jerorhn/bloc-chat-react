@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 import * as firebase from 'firebase';
 import './App.css';
 
@@ -21,9 +22,11 @@ class App extends Component {
     super(props);
     this.state = {
       activeRoomID: '-L5G7HSty09dMskFDpMA',
-      activeRoomName: 'Room 1'
+      activeRoomName: 'Room 1',
+      userName: 'hello'
     };
     this.handleClickState = this.handleClickState.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   handleClickState(selectionID, selectionName) {
@@ -33,13 +36,19 @@ class App extends Component {
     this.setState({activeRoomName: newActiveRoomName});
   }
 
+  setUser(user) {
+    const newUser = user;
+    this.setState({userName: newUser});
+  }
+
   render() {
     return (
       <div className="App">
         <RoomList
           firebase={firebase} activeRoomID={this.state.activeRoomID} activeRoomName={this.state.activeRoomName} handleClickState={this.handleClickState}/>
         <MessageList
-            firebase={firebase} activeRoomID={this.state.activeRoomID} activeRoomName={this.state.activeRoomName}/>
+          firebase={firebase} activeRoomID={this.state.activeRoomID} activeRoomName={this.state.activeRoomName}/>
+        <User firebase={firebase} setUser={this.setUser} userState={this.state.userName} />
       </div>
     );
   }
