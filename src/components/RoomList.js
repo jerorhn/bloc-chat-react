@@ -51,13 +51,13 @@ class RoomList extends Component {
   render() {
     return(
       <div id='rooms'>
-      <h1>Bloc Chat</h1>
+      <h1 id='app-name'>Bloc Chat</h1>
         <form onSubmit={this.createRoom}>
-          <input type='text' onChange={this.storeInput}/>
+          <input type='text' id='newRoom' onChange={this.storeInput}/>
           <input type='submit'/>
         </form>
 
-        <ul>
+        <ul className='rooms'>
           {this.state.rooms.map((num, index) =>
             <li key={index} className={this.handleClass(num)} onClick={() => this.handleClick(num)}>{num.name}</li>
           )}

@@ -21,11 +21,19 @@ class MessageList extends Component {
   render() {
     return(
       <div id='messages'>
-        <h1>{this.props.activeRoomName}</h1>
-        <ul>
+        <h2>{this.props.activeRoomName}</h2>
+        <ul id='message-list'>
           {this.state.messages.map((id, index) => {
             if (id.roomID === this.props.activeRoomID) {
-              return <li key={index} className='message'>{id.content}</li>
+              return (
+                <li key={index} className='message'>
+                  <div className='message'>
+                    <h3 className='username'>{id.username}</h3>
+                    <p className='sentAt'>{id.sentAt}</p>
+                    <p className='content'>{id.content}</p>
+                  </div>
+                </li>
+              )
             }
           })}
         </ul>

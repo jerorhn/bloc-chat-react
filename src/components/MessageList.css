@@ -1,14 +1,37 @@
 #messages {
-  width: calc(100vw - 260px);
+  box-sizing: border-box;
+  width: 75vw;
   height: 100vh;
   display: inline-block;
   float: right;
 }
 
+#message-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 li.message {
-  background-color: aliceblue;
+  background-color: white;
+  min-height: 50px;
+  padding: 5px;
 }
 
 li:nth-child(odd).message {
-  background-color: white;
+  background-color: aliceblue;
+}
+
+.username {
+  margin: 5px 0;
+  display: inline-block;
+}
+
+.content {
+  margin: 0;
+}
+
+.sentAt {
+  margin: 5px;
+  display: inline-block;
+  float: right;
 }
