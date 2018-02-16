@@ -35,3 +35,16 @@ li:nth-child(odd).message {
   display: inline-block;
   float: right;
 }
+
+#message-form {
+  box-sizing: border-box;
+  width: 73vw;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#newMessage {
+  width: calc(73vw - 60px);
+}

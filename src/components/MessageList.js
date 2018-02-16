@@ -5,8 +5,11 @@ class MessageList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      newMessage: ''
     };
+    this.createMessage = this.createMessage.bind(this);
+    this.storeInput = this.storeInput.bind(this);
     this.messagesRef = this.props.firebase.database().ref('messages');
   }
 
@@ -16,6 +19,22 @@ class MessageList extends Component {
       message.key = snapshot.key;
       this.setState({messages: this.state.messages.concat(message)});
     });
+  }
+
+  createMessage(event) {
+    event.preventDefault();
+    this.messagesRef.push({
+      username: this.props.userState.displayName,
+      content: this.state.newMessage,
+      sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+      roomID: this.props.activeRoomID
+    });
+    this.setState({newMessage: ''});
+  }
+
+  storeInput(e) {
+    const newValue = e.target.value;
+    this.setState({newMessage: newValue});
   }
 
   render() {
@@ -37,6 +56,10 @@ class MessageList extends Component {
             }
           })}
         </ul>
+        <form id='message-form' onSubmit={this.createMessage}>
+          <input type='text' id='newMessage' onChange={this.storeInput}/>
+          <input type='submit'/>
+        </form>
       </div>
     )
   }
