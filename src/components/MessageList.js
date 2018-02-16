@@ -37,6 +37,12 @@ class MessageList extends Component {
     this.setState({newMessage: newValue});
   }
 
+  setTime(time) {
+    const format = new Date(time);
+    const newTime = String(format);
+    return newTime;
+  }
+
   render() {
     return(
       <div id='messages'>
@@ -48,7 +54,7 @@ class MessageList extends Component {
                 <li key={index} className='message'>
                   <div className='message'>
                     <h3 className='username'>{id.username}</h3>
-                    <p className='sentAt'>{id.sentAt}</p>
+                    <p className='sentAt'>{this.setTime(id.sentAt)}</p>
                     <p className='content'>{id.content}</p>
                   </div>
                 </li>
