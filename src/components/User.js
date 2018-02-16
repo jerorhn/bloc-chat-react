@@ -25,17 +25,17 @@ class User extends Component {
   }
 
   handleUserName() {
-    if(this.props.userState.displayName === null) {
+    if(this.props.userState === null) {
       return 'Guest'
     } else {
-      return {this.props.userState.displayName}
+      return this.props.userState.displayName
     }
   }
 
   render() {
     return (
       <div>
-        <p id='user-display'>{this.handleUserName}</p>
+        <p id='user-display'>{this.handleUserName()}</p>
         <button id='login' onClick={this.handleSignIn}>Login</button>
         <button id='logout' onClick={this.handleSignOut}>Logout</button>
       </div>
